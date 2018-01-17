@@ -5,6 +5,6 @@ return [
 	'database_name' => 'mo-letuo',
 	'server'        => 'localhost',
 	'username'      => 'root',
-	'password'      => '123456',
+	'password'      => '',
 	'charset'       => 'utf8',
 ];

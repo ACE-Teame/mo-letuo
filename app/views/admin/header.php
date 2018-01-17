@@ -6,5 +6,6 @@
 	<title>后台管理</title>
 	<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_331351_hryty5db7d9m5cdi.css">
     <?php echo css('admin_main.css') ?>
+    <?php echo js('jquery.min.js') ?>
 </head>
 <body class="admin">

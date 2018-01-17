@@ -20,17 +20,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>北京</td>
-                                <td>北京1</td>
-                                <td>北京1</td>
-                                <td>0755-65236591</td>
-                                <td>
-                                    <a href="javascript:;" class="btn modify" onClick="user_edit(<?=$user['id']?>)">修改</a>
-                                    <a href="javascript:;" class="btn delete" onclick="delete_by_id(<?=$user['id']?>)">删除</a>
-                                </td>
-                            </tr>
+                        <?php foreach ($shopList as $key => $shop): ?>
+                        <tr>
+                            <td><?=$number++ ?></td>
+                            <td><?=$shop['city_name']?></td>
+                            <td><?=$shop['shop_name']?></td>
+                            <td><?=$shop['shop_address']?></td>
+                            <td><?=$shop['shop_mobile']?></td>
+                            <td>
+                                <a href="javascript:;" class="btn modify" onClick="shop_modify(<?=$shop['shop_id']?>)">修改</a>
+                                <a href="javascript:;" class="btn delete" onclick="delete_by_id(<?=$shop['shop_id']?>)">删除</a>
+                            </td>
+                        </tr>
+                        <?php endforeach ?>
                     </tbody>
                 </table>
                 <div class="paginate">
@@ -46,17 +48,17 @@
         <div class="popup">
             <div class="content">
                 <div class="title"><i class="iconfont icon-modify"></i> 编辑</div>
-                <div class="form">                      
-                    <form action="<?=base_url('user/add')?>" class="operateForm" method="POST" id="from" name="adduser">
+                <div class="form" id="div-form">
+                    <form action="<?=base_url('shop/modifyShop')?>" class="operateForm" method="POST" id="shop-form" name="adduser">
                         <div class="entry">
                             <input type="hidden" name="shop_id" id="shop_id" value="">
                         </div>
                         <div class="entry">
                             <label>城市:</label>
-                            <select name="city_id" id="city_id" onChange="city_change(this)">
-                                <option value="">1523</option>
-                                <option value="">1283</option>
-                                <option value="">1823</option>
+                            <select name="city_id" id="city_id">
+                                <?php foreach ($cityList as $key => $city): ?>
+                                <option value="<?=$city['shop_id']?>"><?=$city['city_name']?></option>
+                                <?php endforeach ?>
                             </select>
                         </div>
                         <div class="entry">
@@ -69,12 +71,14 @@
                         </div>
                         <div class="entry">
                             <label>电话:</label>
-                            <input type="text" name="phone" id="phone" value="" placeholder="">
+                            <input type="text" name="shop_mobile" id="shop_mobile" value="" placeholder="">
                         </div>
+                        <input type="hidden" name="type" id="modify-type" value="add">
                     </form>
                 </div>
                 <div class="operate">
-                    <a href="javascript:document.adduser.submit();" class="btn save">保存</a>
+                    <!-- <a href="javascript:document.adduser.submit();" onclick="save()" class="btn save">保存</a> -->
+                    <a href="javascript:;" onclick="save()" class="btn save">保存</a>
                     <a href="javascript:;" class="btn cancle" onClick="cancel()">取消</a>
                 </div>          
                 <div class="close"><a href="#" class="btn-close"><i class="iconfont icon-close"></i></a></div> 
@@ -82,15 +86,20 @@
         </div><!-- end popup -->
     </div>
     <script>
+        var div_form = $("#div-form").html();
         /**
          * 修改时获取数据
          */
-        function user_edit(id)
+        function shop_modify(shop_id)
         {
-            $.get('<?=base_url('user/byPkGetUser')?>',{id:id}, function(data) {
+            $.get('<?=base_url('shop/byPkGetShop')?>',{shop_id:shop_id}, function(data) {
                 if(data) {
-                    $("#id").val(data.id);
-                    $("#username").val(data.username);
+                    $("#shop_id").val(shop_id);
+                    $("#city_id").val(data.pid);
+                    $("#shop_name").val(data.shop_name);
+                    $("#shop_address").val(data.shop_address);
+                    $("#shop_mobile").val(data.shop_mobile);
+                    $("#modify-type").val('edit');
                 }
             }, 'JSON');
         }
@@ -100,21 +109,35 @@
          */
         function cancel()
         {
-            $("#id").val('');
-            $("#name").val('');
+            $("#div-form").html(div_form);
         }
 
         /**
          * 根据ID删除数据
          */
-        function delete_by_id(id)
+        function delete_by_id(shop_id)
         {
-            if(confirm('确定删除？') == true){
-                $("#from").attr('action', '<?=base_url('user/deleteById')?>' + '?id=' + id);
-                $("#from").submit();
+            if (confirm('确定删除？') == true) {
+                $.post('<?=base_url('shop/delShop')?>', {shop_id: shop_id}, function(data) {
+                    if (data.status == 200) {
+                        alert('删除成功');
+                        location.href = "<?=base_url('shop/shopList')?>";
+                    } else {
+                        alert('删除失败，请刷新重试');
+                    }
+                }, 'JSON');
             }
         }
 
+        function save()
+        {
+            $.post('<?=base_url('shop/modifyShop')?>', $("#shop-form").serialize(), function(data) {
+                if (data.status == 200) {
+                    alert(data.msg + '成功');
+                    location.href = "<?=base_url('shop/shopList')?>";
+                }
+            }, 'JSON');
+        }
     </script>
 <?php echo view('admin/footer') ?>
 

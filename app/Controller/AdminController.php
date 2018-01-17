@@ -30,8 +30,8 @@ class AdminController extends Wb_Controller
     public function _arrangeData( &$data )
     {
         foreach ($data as $key => $val) {
-            $data[$key]['city_name'] =parent::$model->select('shop', 'city_name', ['shop_id' => $val['city_id']])[0];
-            $data[$key]['shop_name'] =parent::$model->select('shop', 'shop_name', ['shop_id' => $val['shop_id']])[0];
+            $data[$key]['city_name'] = parent::$model->select('shop', 'city_name', ['shop_id' => $val['city_id']])[0];
+            $data[$key]['shop_name'] = parent::$model->select('shop', 'shop_name', ['shop_id' => $val['shop_id']])[0];
         }
     }
 
