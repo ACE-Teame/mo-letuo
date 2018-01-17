@@ -129,7 +129,7 @@ form .entry label { display: inline-block; min-width: 75px; }*/
 
 .popup { display: none; position: fixed; left: 0; right: 0; top: 0; bottom: 0; height: 100%; width: 100%; background: rgba(0, 0, 0, .5); }
 .popup.active { display: block; } 
-.popup .content { position: absolute; left: 50%; top: 50%; margin-top: -250px; margin-left: -200px; width: 400px; background: #fff; border-radius: 5px; }
+.popup .content { position: absolute; left: 50%; top: 50%; margin-top: -250px; margin-left: -200px; width: 364px; background: #fff; border-radius: 5px; }
 .popup .content .title { padding: 10px 20px; background: #1c9efe; text-align: left; color: #fff; border-top-right-radius: 5px; border-top-left-radius: 5px; font-size: 20px; }
 .popup .form { padding: 20px; }
 .popup .form .operateForm label { display: inline-block; width: 30%; }

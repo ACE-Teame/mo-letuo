@@ -34,6 +34,17 @@
 							</li>
 						</ul>
 					</li>
+					<li>
+						<div class="menu-title">门店管理</div>
+						<ul>
+							<li>
+								<a href="<?php echo base_url('shop/shopList') ?>" id="shop" class="menu-name"><i class="iconfont icon-link"></i>门店列表</a>
+							</li>
+							<li>
+								<a href="<?php echo base_url('shop/cityList') ?>" id="shop" class="menu-name"><i class="iconfont icon-link"></i>城市列表</a>
+							</li>
+						</ul>
+					</li>
 				</ul>
 			</div>
 			<div class="copyright">
