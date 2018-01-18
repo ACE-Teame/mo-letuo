@@ -37,9 +37,9 @@
                 </table>
                 <div class="paginate">
                     <ul class="clear">
-                       <!-- <?php if ($count > $pageNum): ?>
+                       <?php if ($count > $pageNum): ?>
                             <?=$pageList?>
-                        <?php endif ?> -->
+                        <?php endif ?>
                     </ul>
                 </div>
             </div> <!-- end table -->

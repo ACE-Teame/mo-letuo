@@ -67,11 +67,17 @@
             <a class="btn btn-next" href="javascript:;" onClick="submit_application(this)">免费预约58元超值套餐</a>
         </div>
 
-        <div class="img"><img src="<?php echo base_url('resource/images/p_14_02.jpg') ?>" alt=""></div>  
+        <!-- <div class="img"><img src="<?php echo base_url('resource/images/p_14_02.jpg') ?>" alt=""></div>  
         <div class="img"><img src="<?php echo base_url('resource/images/p_10.jpg') ?>" alt=""></div>  
         <div class="img"><img src="<?php echo base_url('resource/images/59.jpg') ?>" alt=""></div>  
         <div class="img"><img src="<?php echo base_url('resource/images/p_12.jpg') ?>" alt=""></div>  
-        <div class="img"><img src="<?php echo base_url('resource/images/p_13.jpg') ?>" alt=""></div>  
+        <div class="img"><img src="<?php echo base_url('resource/images/p_13.jpg') ?>" alt=""></div>   -->
+
+        <div class="img"><img src="<?php echo base_url('resource/images/y_01.jpg') ?>" alt=""></div>  
+        <div class="img"><img src="<?php echo base_url('resource/images/y_02.jpg') ?>" alt=""></div>  
+        <div class="img"><img src="<?php echo base_url('resource/images/y_03.jpg') ?>" alt=""></div>  
+        <div class="img"><img src="<?php echo base_url('resource/images/y_04.jpg') ?>" alt=""></div>  
+
         <div class="img"><img src="<?php echo base_url('resource/images/p_14.jpg') ?>" alt=""></div>  
         <div class="img"><img src="<?php echo base_url('resource/images/p_15.jpg') ?>" alt=""></div>  
         <footer>
